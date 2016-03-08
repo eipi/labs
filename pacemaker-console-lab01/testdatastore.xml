@@ -1,0 +1,14 @@
+<object-stream>
+  <java.util.ArrayDeque serialization="custom">
+    <unserializable-parents/>
+    <java.util.ArrayDeque>
+      <default/>
+      <int>5</int>
+      <long>0</long>
+      <long>0</long>
+      <map/>
+      <map/>
+      <map/>
+    </java.util.ArrayDeque>
+  </java.util.ArrayDeque>
+</object-stream>
