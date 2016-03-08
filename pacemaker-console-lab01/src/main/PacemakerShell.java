@@ -38,7 +38,8 @@ public class PacemakerShell implements CommandProcessor
         }
         catch (Exception e)
         {
-            System.out.println("Error executing command");
+            System.err.println("Error executing command");
+            System.err.println(e.getMessage());
         }
     }
 

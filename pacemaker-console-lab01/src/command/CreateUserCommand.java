@@ -29,14 +29,21 @@ public class CreateUserCommand extends Command
     public void undoCommand() throws Exception
     {
         pacemaker.deleteUser(user.id);
+        //pacemaker.deleteUserByEmail(user.email);
     }
 
     public void redoCommand() throws Exception
     {
-        pacemaker.createUser(user.firstname, user.lastname, user.email, user.password);
+        user.id = pacemaker.createUser(user.firstname, user.lastname, user.email, user.password);
     }
 
     public CreateUserCommand clone() {
       return new CreateUserCommand(pacemaker,parser,user);
+    }
+
+    public Command copy() {
+        CreateUserCommand command = new CreateUserCommand(pacemaker, parser);
+        command.user = user;
+        return command;
     }
 }

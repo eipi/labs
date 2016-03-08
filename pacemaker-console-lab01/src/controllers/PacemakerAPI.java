@@ -90,7 +90,14 @@ public class PacemakerAPI
     User user = userMap.remove(id);
     userEmailMap.remove(user.email);
   }
-  
+
+    public void deleteUserByEmail(String email)
+    {
+        User user = getUser(email);
+        userMap.remove(user.id);
+        userEmailMap.remove(user.email);
+    }
+
   public Activity createActivity(Long id, String type, String location, double distance, String dateStr, String durationStr)
   {
     Activity activity = null;

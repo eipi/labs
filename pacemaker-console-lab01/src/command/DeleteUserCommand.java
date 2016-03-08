@@ -27,7 +27,7 @@ public class DeleteUserCommand extends Command
 
     public void undoCommand() throws Exception
     {
-        pacemaker.createUser(user.firstname, user.lastname, user.email, user.password);
+        user.id = pacemaker.createUser(user.firstname, user.lastname, user.email, user.password);
     }
 
     public void redoCommand() throws Exception
@@ -37,5 +37,11 @@ public class DeleteUserCommand extends Command
 
     public DeleteUserCommand clone() {
         return new DeleteUserCommand(pacemaker,parser, user);
+    }
+
+    public Command copy() {
+        DeleteUserCommand command = new DeleteUserCommand(pacemaker, parser);
+        command.user = user;
+        return command;
     }
 }

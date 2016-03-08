@@ -1,25 +1,18 @@
 package command;
 
-import java.util.Stack;
-
 public class UndoCommand extends Command
 {
-    private Stack<Command> undoBuffer;
-    private Stack<Command> redoBuffer;
-
-    public UndoCommand(Stack<Command> undoBuffer, Stack<Command> redoBuffer)
-    {
-        this.undoBuffer = undoBuffer;
-        this.redoBuffer = redoBuffer;
-    }
 
     public void doCommand(Object[] parameters) throws Exception
     {
-        if (undoBuffer.size() > 0)
+        if (CommandDispatcher.peekUndo().size() > 0)
         {
-            Command command = undoBuffer.pop();
+            Command command = CommandDispatcher.peekUndo().pop();
             command.undoCommand();
-            redoBuffer.push(command);
+            CommandDispatcher.registerCommandForRedo(command);
+        } else
+        {
+            System.out.println("Nothing to Undo");
         }
     }
 

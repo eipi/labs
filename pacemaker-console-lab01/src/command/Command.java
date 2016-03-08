@@ -28,4 +28,8 @@ public abstract class Command
     public Command clone() {
         return this;
     }
+
+    public Command copy() {
+        return null;
+    }
 }
